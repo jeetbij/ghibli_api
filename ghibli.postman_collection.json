@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "d0d3a1b6-b78e-41bb-92fe-e51cf3806b8f",
+		"name": "ghibli",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15447363"
+	},
+	"item": [
+		{
+			"name": "Get movie details by movie_id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "ghiblikey",
+						"value": "THIS_IS_GHIBLI_TOKEN",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/movies?movie_id=58611129-2dbc-4a81-a72f-77ddfc1b1b49",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"movies"
+					],
+					"query": [
+						{
+							"key": "movie_id",
+							"value": "58611129-2dbc-4a81-a72f-77ddfc1b1b49"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all movies details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "ghiblikey",
+						"value": "THIS_IS_GHIBLI_TOKEN",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

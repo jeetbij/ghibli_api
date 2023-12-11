@@ -1,6 +1,5 @@
 import requests
 import json
-from rest_framework.exceptions import APIException
 
 class APIRequestFailed(Exception):
     def __init__(self, message):

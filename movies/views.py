@@ -2,7 +2,8 @@ from rest_framework.views import APIView
 from rest_framework import status
 from django.core.cache import cache
 from django.http import JsonResponse
-from services.ghibli_client import GhibliClient, ResourceNotFound
+from services.ghibli_client import ResourceNotFound
+from movies.utils import get_movie_by_id
 
 
 class ListMovies(APIView):
@@ -20,18 +21,7 @@ class ListMovies(APIView):
             if cache.get(cache_key, None):
                 movies = cache.get(cache_key)
             else:
-                movies = GhibliClient().get_movie_by_id(movie_id)
-                for movie in movies:
-                    actors = []
-                    for people_url in movie.pop('people'):
-                        people = GhibliClient().get_people_by_link(people_url)
-                        actors.append({
-                            "id": people['id'],
-                            "name": people['name'],
-                            "species": people['species'],
-                            "url": people['url']
-                        })
-                    movie['actors'] = actors
+                movies = get_movie_by_id(movie_id)
                 cache.add(cache_key, movies, timeout=60)
 
             return JsonResponse({
